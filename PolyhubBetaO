@@ -1,0 +1,121 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("PolyHub (Beta 1.4)", "Ocean")
+
+--Tabs
+local Home = Window:NewTab("Home")
+local Scripts = Window:NewTab("Scripts")
+local LocalPlayer = Window:NewTab("LocalPlayer")
+local MainSection = Home:NewSection("Welcome.")
+local ScriptSection = Scripts:NewSection("Scripts hot and ready")
+local Games = Window:NewTab("Games")
+local GameSection = Games:NewSection("Scripts for games")
+local Credits = Window:NewTab("Credits")
+local CreditSection = Credits:NewSection("---Credits to---")
+
+
+--Labels
+CreditSection:NewLabel("me lol im the only one who made it")
+MainSection:NewLabel("I tried to make a GUI thats made for multiple servers")
+--home buttons and other s
+
+MainSection:NewButton("Reset", "u die", function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end)
+--localplayer
+local LocalSection = LocalPlayer:NewSection("You know exactly what this is")
+
+--localscripts
+LocalSection:NewSlider("Walkspeed", "Sets your walkspeed", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+LocalSection:NewSlider("Jump Height", "Sets your jump height", 500, 8, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpHeight = s
+end)
+LocalSection:NewToggle("Noclip (WIP)", "Lets you noclip", function(state)
+    if state then
+        game.Players.LocalPlayer.Character.Humanoid.Health = 500
+    else
+        game.Players.LocalPlayer.Character.Humanoid.Health = 100
+    end
+end)
+LocalSection:NewButton("Refill Health", "Refills Health", function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 100
+end)
+LocalSection:NewButton("Inf Jump", "Makes you jump infinitely", function(state)
+    local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+local InfiniteJump = CreateButton("Infinite Jump: Off", StuffFrame)
+InfiniteJump.Position = UDim2.new(0,10,0,130)
+InfiniteJump.Size = UDim2.new(0,150,0,30)
+InfiniteJump.MouseButton1Click:connect(function()
+	local state = InfiniteJump.Text:sub(string.len("Infinite Jump: ") + 1) --too lazy to count lol
+	local new = state == "Off" and "On" or state == "On" and "Off"
+	InfiniteJumpEnabled = new == "On"
+	InfiniteJump.Text = "Infinite Jump: " .. new
+end)
+end)
+--scripts
+ScriptSection:NewButton("Fly GUI", "Gives a fly GUI", function()
+    loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\40\39\104\116\116\112\115\58\47\47\103\105\115\116\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\109\101\111\122\111\110\101\89\84\47\98\102\48\51\55\100\102\102\57\102\48\97\55\48\48\49\55\51\48\52\100\100\100\54\55\102\100\99\100\51\55\48\47\114\97\119\47\101\49\52\101\55\52\102\52\50\53\98\48\54\48\100\102\53\50\51\51\52\51\99\102\51\48\98\55\56\55\48\55\52\101\98\51\99\53\100\50\47\97\114\99\101\117\115\37\50\53\50\48\120\37\50\53\50\48\102\108\121\37\50\53\50\48\50\37\50\53\50\48\111\98\102\108\117\99\97\116\111\114\39\41\44\116\114\117\101\41\41\40\41\10\10")()
+end)
+ScriptSection:NewButton("Flashlight", "Gives a flashlight", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/polydipsia/Polyhub/main/Flashlight%20Script"))()
+end)
+ScriptSection:NewButton("Walk on walls", "impressive...", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/PJUJjEw3'))()
+end)
+ScriptSection:NewButton("Gymnastics (Z,X,C) (Takes a sec to load)", "FLIPS", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/fw9zN0Z7'))()
+end)
+ScriptSection:NewButton("Energize Animation GUI", "funny script", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/u2h6UgzE'))()
+end)
+ScriptSection:NewButton("Click TP", "tp script idk", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/PhoenixAceVFX/Roblox-Scripts/master/Click%20TP%20Tool.lua"))()
+end)
+ScriptSection:NewButton("Invisible Fling (BUGGY)", "flings people", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/polydipsia/Polyhub/main/invisiblefling"))()
+end)
+ScriptSection:NewButton("Invisible Script (E TO USE)", "turn invisible", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/polydipsia/test/main/AAAAAA",true))();game:GetService("StarterGui"):SetCore("SendNotification",{["Title"] = "Invisible Toggle Loaded",["Text"] = "Press "..Keybind.." to become change visibility.",["Duration"] = 20,["Button1"] = "Okay."})
+end)
+ScriptSection:NewButton("Telekinesis", "Very good script for commands", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/shHia9pV'))()
+end)
+ScriptSection:NewLabel("Admin commands")
+ScriptSection:NewButton("CMD-X", "Very good script for commands", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source", true))()
+end)
+ScriptSection:NewButton("Infinite Yield", "Another popular commands script", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+ScriptSection:NewButton("Fates Admin", "COmmandS", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))();
+end)    
+--random sh
+ScriptSection:NewLabel("Other random stuff i found")
+ScriptSection:NewButton("OPFinality", "idk", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/4Dg2WWts'))()
+end)
+ScriptSection:NewButton("Backdoor Finder", "idk how this works figure it out", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/iK4oS/backdoor.exe/v8/src/main.lua"))();
+end)
+ScriptSection:NewButton("T0PK3K REMAKE", "rip T0PK3K :'(", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/qNmJ7Hzv'))()
+end)
+ScriptSection:NewButton("Pendulum Hub", "A gui", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tescalus/Pendulum-Hubs-Source/main/Pendulum%20Hub%20V5.lua"))()
+end)
+--game section
+GameSection:NewButton("DOORS", "Script for the game Doors", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Doors/Script.lua"))()
+end)
+GameSection:NewButton("RAY X (Da Hood)", "gui for da hood", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/SpaceYes/Lua/Main/DaHood.Lua'))()
+end)
+--toggle
+MainSection:NewKeybind("Keybind", "sets your keybind", Enum.KeyCode.V, function()
